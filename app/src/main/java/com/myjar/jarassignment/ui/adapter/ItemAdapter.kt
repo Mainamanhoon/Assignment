@@ -11,7 +11,7 @@ import com.myjar.jarassignment.R
 import com.myjar.jarassignment.data.model.ComputerItem
 
 class ItemAdapter(
-    private val onItemClick: (ComputerItem) -> Unit
+//    private val onItemClick: (ComputerItem) -> Unit
 ) : ListAdapter<ComputerItem, ItemAdapter.ItemViewHolder>(ItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -22,15 +22,23 @@ class ItemAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item, onItemClick)
+        holder.bind(item
+//            ,
+//            onItemClick
+        )
     }
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val itemName: TextView = itemView.findViewById(R.id.item_name)
 
-        fun bind(item: ComputerItem, onItemClick: (ComputerItem) -> Unit) {
+        fun bind(item: ComputerItem
+//                 , onItemClick: (ComputerItem) -> Unit
+        ) {
             itemName.text = item.name
-            itemView.setOnClickListener { onItemClick(item) }
+            itemView.setOnClickListener {
+//                onItemClick(item)
+
+            }
         }
     }
 

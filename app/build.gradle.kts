@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.dagger.hilt.android") version "2.57.1" apply false
+    id ("kotlin-kapt")
+
 }
 
 android {
@@ -18,6 +21,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+    }
+    buildFeatures{
+        viewBinding = true
     }
 
     buildTypes {
@@ -72,4 +78,16 @@ dependencies {
     implementation (libs.retrofit)
     implementation (libs.retrofit.gson.convertor)
 
+    implementation ("com.google.dagger:hilt-android:2.44")
+    kapt ("com.google.dagger:hilt-android-compiler:2.44")
+
+    // ViewModel support
+    implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    kapt ("androidx.hilt:hilt-compiler:1.0.0")
+
+
+}
+
+kapt {
+    correctErrorTypes = true
 }
